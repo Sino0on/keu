@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+Заявки
+{% endblock %}
+{% block content %}
+
+{% if applications_list %}
+<div class="container m-5 p-5 details">
+    <h1>Заявки</h1>
+    <div class="details-content">
+        <div class="details-fieldset">
+    {% for i in applications_list %}
+        <div class="container">
+        <h3>{{ i.student_id }}</h3>
+        <h3>{{ i.course_id }}</h3>
+            <br>
+
+            <a class="details-action-btn" href="{% url 'application_accept' i.student_id.pk i.course.pk i.pk %}">принять</a>
+            </div>
+
+        <br>
+        <br>
+
+    {% endfor %}
+            </div>
+        </div>
+</div>
+
+{% else %}
+    <div class="details">
+        <h1>Заявок пока нет</h1>
+        <div class="details-content">
+
+        </div>
+    </div>
+{% endif %}
+    </div>
+</div>
+{% endblock %}

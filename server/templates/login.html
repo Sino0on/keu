@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+{% block title %}
+Авторизация
+{% endblock %}
+{% block content %}
+<div class="details">
+    <form action="" method="POST">
+
+            <div class="details-fieldset">
+                {% csrf_token %}
+                <br>
+                <h4>Имя пользователя</h4>
+                <br>
+                <p>{{form.username}}</p>
+                <br>
+                <h4>Пароль</h4>
+                <br>
+                <p>{{form.password}}</p>
+                <br>
+            </div>
+            <button class="details-action-btn" value="submit" class="btn btn-success">Войти</button>
+
+    </form>
+</div>
+{% endblock %}

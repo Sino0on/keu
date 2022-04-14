@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+Добавление Задания
+{% endblock %}
+{% block content %}
+<div class="details">
+    <div class="details-fieldset">
+        <div class="details-fieldset-section">
+            <h2>Добавить задание</h2>
+        </div>
+<form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="details-fieldset">
+    <p class="details-fieldset-section">Название {{ taskform.title }}</p>
+    <p class="details-fieldset-section">Описание {{ taskform.text }}</p>
+    <p class="details-fieldset-section">Ссылка из юту {{ taskform.link_youtube }}</p>
+    <input class="details-fieldset-section" type="file" name = "files" multiple />
+    <button class="details-action-btn" value="submit" >Done</button>
+        </div>
+ </form>
+    </div>
+    </div>
+{% endblock %}

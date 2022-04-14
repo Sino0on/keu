@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Регистрация{% endblock %}
+{% block content %}
+<div class="details">
+    <form action="" method="POST">
+
+            <div class="details-fieldset">
+                {% csrf_token %}
+                <br>
+                <h4>Имя пользователя</h4>
+                <br>
+                <p>{{form.username}}</p>
+                <br>
+                <h4>Имя</h4>
+                <br>
+                <p>{{form.name}}</p>
+                <br>
+                <h4>Фамилия</h4>
+                <br>
+                <p>{{form.first_name}}</p>
+                <br>
+                <h4>Пароль</h4>
+                <br>
+                <p>{{form.password1}}</p>
+                <br>
+                <h4>Повторите пароль</h4>
+                <br>
+                <p>{{form.password2}}</p>
+                <br>
+            </div>
+            <button class="details-action-btn" value="submit" class="btn btn-success">Регистрация</button>
+
+    </form>
+</div>
+{% endblock %}

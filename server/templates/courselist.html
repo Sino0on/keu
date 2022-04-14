@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+Курсы
+{% endblock %}
+{% block content %}
+<div class="details">
+  <h1>Курсы</h1>
+  <br>
+  <br>
+  <div class="details-content">
+  <div class="details-fieldset">
+  {% for i in courselist %}
+
+    <h3>{{ i.title }}</h3>
+    <p class="details-content-desc">{{ i.content }}</p>
+    <br>
+    <a class="details-action-small-btn" href="{% url 'detail' i.id %}">Подробнее</a>
+    <br>
+    <br>
+  {% endfor %}
+    </div>
+    </div>
+  </div>
+{% endblock %}

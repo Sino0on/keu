@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container m-5 p-5 details">
+    <h1>Мои курсы</h1>
+    <div class="details-content">
+        <div class="details-fieldset">
+    {% for i in my_courses %}
+        <div class="container">
+        <h3>{{ i.title }}</h3>
+            <div class="details-content-desc">
+        {{ i.content }}
+            </div>
+            </div>
+            <br>
+            <div class="row">
+        <a class="details-action-small-btn" href="{% url 'detail' i.pk %}">подробнее</a>
+        {% if user.is_teacher %}
+
+        <a class="details-action-small-btn" href="{% url 'taskcreate' i.pk %}">Добавить задание</a>
+            </div>
+        {% endif %}
+        <br>
+        <br>
+
+    {% endfor %}
+            </div>
+        </div>
+</div>
+{% endblock %}
