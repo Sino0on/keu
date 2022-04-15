@@ -7,8 +7,10 @@
 <h1>{{ task.title }}</h1>
 <p class="details-content-desc">{{ task.text }}</p>
         <div class="details-fieldset">
+            {{ task.link_youtube }}
+            {% if task.link_youtube %}
 <iframe width="560" height="315" src="{{ task.link_youtube }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+{% endif %}
             <p class="details-content-desc">Нажмите на картинку чтобы скачать или на файл</p>
 {% for i in images %}
             <a href="{{ i.file.url }}" download><img src="{{ i.image.url }}" class="figure-img img-fluid rounded" width="250" height="250"  alt=""></a>

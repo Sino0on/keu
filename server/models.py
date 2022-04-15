@@ -82,7 +82,7 @@ class Task(models.Model):
     text = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
-    course_id = models.ForeignKey(Course, on_delete=models.CASCADE, blank=True, null=True)
+    modul = models.ForeignKey('Modul', on_delete=models.CASCADE, blank=True, null=True, related_name='tasks')
     link_youtube = models.URLField(blank=True, null=True)
 
     def __str__(self):
@@ -91,7 +91,6 @@ class Task(models.Model):
     class Meta:
         verbose_name = 'Задание'
         verbose_name_plural = 'Задания'
-        ordering = ['-date']
 
 
 class CourseUser(models.Model):
@@ -122,3 +121,17 @@ class Application(models.Model):
         verbose_name_plural = 'Заявки на курс'
         ordering = ['-date']
         unique_together = ['student_id', 'course']
+
+
+class Modul(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, blank=True, null=True, related_name='modules')
+    title = models.CharField(max_length=100)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.title}'
+
+    class Meta:
+        verbose_name = 'Глава'
+        verbose_name_plural = 'Главы'
+

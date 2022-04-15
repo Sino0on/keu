@@ -18,4 +18,4 @@ urlpatterns = [
     path('task/detail/<int:pk>', task_detail, name='task_detail'),
     path('', courses_list, name='course/list'),
     path('user/edit/<int:pk>', user_edit, name='user_edit'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

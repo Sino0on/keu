@@ -25,7 +25,7 @@ class UserRegisterForm(UserCreationForm):
 class TaskCreateForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ['title', 'text', 'link_youtube']
+        fields = ['title', 'text', 'link_youtube', 'modul']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'details-fieldset-section'}),
             'title': forms.TextInput(attrs={'class': 'details-fieldset-section'}),

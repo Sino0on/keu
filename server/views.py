@@ -14,7 +14,9 @@ def task_create_view(request, pk):
 
             if form_task.is_valid():
                 das = form_task.save(commit=False)
+                print(das.link_youtube)
                 if das.link_youtube:
+
                     das.link_youtube = 'https://www.youtube.com/embed/' + das.link_youtube.split('=')[-1]
 
                 das.user = request.user
@@ -105,16 +107,17 @@ def my_courses(request):
 
 def detail(request, pk):
     course = Course.objects.get(id=pk)
-    tasks = Task.objects.filter(course_id=pk)
+    moduls = Modul.objects.filter(course=pk)
     mycourses = 1
     in_course = False
+    print(request.user)
     if str(request.user) != 'AnonymousUser':
         mycourses = CourseUser.objects.filter(course_id=pk, user_id=request.user)
         in_course = mycourses.exists()
 
     print(mycourses)
     print(in_course)
-    return render(request, 'detail.html', {'course': course, 'tasks': tasks, 'in_course': in_course})
+    return render(request, 'detail.html', {'course': course, 'moduls': moduls, 'in_course': in_course})
 
 
 @login_required()
